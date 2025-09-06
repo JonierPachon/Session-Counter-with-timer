@@ -9,7 +9,7 @@
    </head>
    <body>
       <div class="container">
-         <div class="inputs">
+         <div class="inputs close">
             <input
                id="hours"
                minlength="2"
@@ -40,11 +40,14 @@
                value="00"
             />
          </div>
-         <button id="start" class="start-btn">Start</button>
+         <button id="start" class="start-btn close">Start</button>
          <!-- class="display" -->
          <div id="display" class="display">00:00:00</div>
-         <button class="reset-btn">Reset</button>
-         <button class="stop-btn">Stop</button>
+         <div class="timer-btns">
+            <button id="cancel-btn" class="cancel-btn">Cancel</button>
+            <button id="reset-btn" class="reset-btn">Reset</button>
+            <button id="pause-btn" class="pause-btn">Pause</button>
+         </div>
       </div>
    </body>
 </html>

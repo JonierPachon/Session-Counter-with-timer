@@ -41,8 +41,9 @@ body {
 button {
    border-radius: 20px;
    border: none;
-   padding: 0.6rem 1rem;
-   font-size: 1.5rem;
+   margin-top: 1rem;
+   padding: 0.6rem 1.8rem;
+   font-size: 1rem;
    text-align: center;
    cursor: pointer;
 }
@@ -53,15 +54,11 @@ button:hover {
 .start-btn {
    background: var(--btn-start);
    color: #ffffff;
-   margin-top: 1rem;
+
    /* font-weight: bold; */
 }
 
 .display {
-   display: none;
-}
-
-.display.active {
    display: flex;
    justify-content: center;
    align-items: center;
@@ -73,9 +70,28 @@ button:hover {
    font-weight: bold;
 }
 
-.reset-btn {
-   display: none;
+.timer-btns {
+   display: flex;
+   justify-content: center;
+   margin-top: 1rem;
+   gap: 2.5rem;
+   align-items: center;
 }
-.stop-btn {
+
+.cancel-btn {
+   background: rgba(104, 104, 104, 0.515);
+   /* border: 1px solid #ffffff; */
+   color: white;
+}
+.reset-btn {
+   background: var(--btn-start);
+   color: #ffffff;
+}
+.pause-btn {
+   color: #ffffff;
+   background: rgba(255, 0, 0, 0.465);
+}
+
+.close {
    display: none;
 }
