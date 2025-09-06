@@ -12,7 +12,9 @@ const cancelBtn = document.querySelector("#cancel-btn");
 const pauseBtn = document.querySelector("#pause-btn");
 
 let timerId;
-let pauseTime = true;
+let endTime;
+let remainingTime = 0;
+let isPaused = false;
 
 function pad(value) {
    return String(value).padStart(2, "0");
@@ -46,6 +48,9 @@ function updateDisplay(endTime) {
    if (totalSeconds <= 0) {
       clearInterval(timerId);
       toggleTimer(false);
+      isPaused = false;
+      pauseBtn.textContent = "Pause";
+      remainingTime = 0;
    }
 }
 
@@ -69,12 +74,14 @@ function startTimer() {
    const totalSeconds = hours * 3600 + minutes * 60 + seconds;
    if (totalSeconds <= 0) return;
 
-   const endTime = Date.now() + totalSeconds * 1000;
+   endTime = Date.now() + totalSeconds * 1000;
 
    updateDisplay(endTime - 1000);
 
    clearInterval(timerId);
    timerId = setInterval(() => updateDisplay(endTime), 1000);
+   isPaused = false;
+   pauseBtn.textContent = "Pause";
 }
 startBtn.addEventListener("click", () => {
    startTimer();
@@ -83,17 +90,37 @@ startBtn.addEventListener("click", () => {
 cancelBtn.addEventListener("click", () => {
    clearInterval(timerId);
    toggleTimer(false);
+   isPaused = false;
+   pauseBtn.textContent = "Pause";
+   remainingTime = 0;
 });
 
 resetBtn.addEventListener("click", () => {
    startTimer();
+   pauseBtn.classList.remove("active");
 });
 
+function pauseTimer() {
+   remainingTime = Math.max(0, Math.floor((endTime - Date.now()) / 1000));
+   clearInterval(timerId);
+   isPaused = true;
+   pauseBtn.textContent = "Resume";
+   pauseBtn.classList.add("active");
+}
+
+function resumeTimer() {
+   endTime = Date.now() + remainingTime * 1000;
+   updateDisplay(endTime - 1000);
+   timerId = setInterval(() => updateDisplay(endTime), 1000);
+   isPaused = false;
+   pauseBtn.textContent = "Pause";
+   pauseBtn.classList.remove("active");
+}
+
 pauseBtn.addEventListener("click", () => {
-   if (pauseTime) {
-      clearInterval(timerId);
-      pauseTime = false;
+   if (!isPaused) {
+      pauseTimer();
    } else {
-      startTimer();
+      resumeTimer();
    }
 });

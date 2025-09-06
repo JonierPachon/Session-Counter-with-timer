@@ -84,12 +84,19 @@ button:hover {
    color: white;
 }
 .reset-btn {
-   background: var(--btn-start);
+   background: #4767f5;
    color: #ffffff;
 }
 .pause-btn {
    color: #ffffff;
    background: rgba(255, 0, 0, 0.465);
+}
+
+.pause-btn.active {
+   background: #ff504a;
+   color: #ffffff;
+   font-weight: 500;
+   padding: 0.6rem 1.33rem;
 }
 
 .close {
