@@ -53,12 +53,16 @@ button:hover {
 .start-btn {
    background: var(--btn-start);
    color: #ffffff;
+   margin-top: 1rem;
    /* font-weight: bold; */
 }
 
 .display {
    display: none;
-   /* display: flex;
+}
+
+.display.active {
+   display: flex;
    justify-content: center;
    align-items: center;
    border: 4px solid #ffffff;
@@ -66,7 +70,7 @@ button:hover {
    width: 15rem;
    height: 15rem;
    font-size: 2.8rem;
-   font-weight: bold; */
+   font-weight: bold;
 }
 
 .reset-btn {

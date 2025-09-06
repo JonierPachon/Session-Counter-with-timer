@@ -7,27 +7,29 @@ const display = document.querySelector("#display");
 
 let timerId;
 
-// function formatInput(input, max) {
-//    let value = parseInt(input.value || 10);
-//    if (value < 0) value = 0;
-//    if (value > max) value = max;
-//    input.value = string(value).padStart(2, "0");
-// }
-
-// // Attach to all three inputs
-// [hoursInput, minutesInput, secondsInput].forEach((input, index) => {
-//    const maxValues = [12, 59, 59]; // The max from HTML
-//    input.addEventListener("blur", () => formatInput(input, maxValues[index]));
-//    input.addEventListener("input", () => {
-//       if (input.value.length > 2) {
-//          input.value = input.value.slice(-2); // keep only two digits
-//       }
-//    });
-// });
-
 function pad(value) {
    return String(value).padStart(2, "0");
 }
+
+function formatInput(input, max) {
+   input.value = input.value.replace(/\D/g, "");
+   let value = parseInt(input.value, 10);
+   if (isNaN(value)) value = 0;
+   if (value > max) value = max;
+   input.value = pad(value);
+}
+
+const inputs = [hoursInput, minutesInput, secondsInput];
+const maxValues = [12, 59, 59];
+
+inputs.forEach((input, index) => {
+   input.addEventListener("input", () => {
+      input.value = input.value.replace(/\D/g, "").slice(0, 2);
+   });
+
+   // input.addEventListener("blur", () => formatInput(input, maxValues[index]));
+   input.addEventListener("change", () => formatInput(input, maxValues[index]));
+});
 
 function updateDisplay(endTime) {
    const totalSeconds = Math.max(0, Math.floor((endTime - Date.now()) / 1000));
@@ -44,6 +46,7 @@ function updateDisplay(endTime) {
 }
 
 startBtn.addEventListener("click", () => {
+   inputs.forEach((input, index) => formatInput(input, maxValues[index]));
    const hours = parseInt(hoursInput.value, 10) || 0;
    const minutes = parseInt(minutesInput.value, 10) || 0;
    const seconds = parseInt(secondsInput.value, 10) || 0;

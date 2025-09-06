@@ -11,29 +11,37 @@
       <div class="container">
          <div class="inputs">
             <input
-               type="number"
                id="hours"
+               minlength="2"
+               type="number"
+               inputmode="numeric"
                max="12"
                min="0"
-               placeholder="00"
-               value
+               value="00"
             />
             <input
+               value="00"
                type="number"
+               inputmode="numeric"
                id="minutes"
+               minlength="2"
+               maxlength="2"
                min="0"
                max="59"
-               placeholder="00"
             />
             <input
-               type="number"
                id="seconds"
+               type="number"
+               inputmode="numeric"
                min="0"
                max="59"
-               placeholder="00"
+               maxlength="2"
+               minlength="2"
+               value="00"
             />
          </div>
          <button id="start" class="start-btn">Start</button>
+         <!-- class="display" -->
          <div id="display" class="display">00:00:00</div>
          <button class="reset-btn">Reset</button>
          <button class="stop-btn">Stop</button>
