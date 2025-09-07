@@ -62,7 +62,7 @@
          const minutes = Math.floor((totalSeconds % 3600) / 60);
          const seconds = totalSeconds % 60;
 
-         this.el.display.textContext = `${this.pad(hours)}:${this.pad(
+         this.el.display.textContent = `${this.pad(hours)}:${this.pad(
             minutes
          )}:${this.pad(seconds)}`;
 
@@ -74,7 +74,7 @@
       // show or hide control elements based on timer running state
       toggleCountdown(isRunning) {
          this.el.startBtn.classList.toggle("close", isRunning);
-         this.el.inputWrapper.classList.toggle("close", isRunning);
+         this.el.inputsWrapper.classList.toggle("close", isRunning);
          this.el.display.classList.toggle("close", !isRunning);
          this.el.resetBtn.classList.toggle("close", !isRunning);
          this.el.cancelBtn.classList.toggle("close", !isRunning);
@@ -112,7 +112,7 @@
       }
 
       reset() {
-         this.start;
+         this.start();
       }
 
       pause() {
