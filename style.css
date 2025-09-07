@@ -12,7 +12,7 @@ body {
 
 :root {
    --btn-start: #6681fa;
-   --btn-stop: #ff0000;
+   /* --btn-stop: #ff0000; */
    --btn-cancel: #00ff00;
 }
 

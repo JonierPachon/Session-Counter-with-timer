@@ -4,13 +4,13 @@
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="stylesheet" href="style.css" />
-      <script src="script.js" defer></script>
       <title>Timer - Session Counter</title>
    </head>
    <body>
       <div class="container">
-         <div class="inputs close">
+         <div class="inputs">
             <input
+               aria-label="hours"
                id="hours"
                minlength="2"
                type="number"
@@ -20,10 +20,11 @@
                value="00"
             />
             <input
+               id="minutes"
+               aria-label="minutes"
                value="00"
                type="number"
                inputmode="numeric"
-               id="minutes"
                minlength="2"
                maxlength="2"
                min="0"
@@ -31,6 +32,7 @@
             />
             <input
                id="seconds"
+               aria-label="seconds"
                type="number"
                inputmode="numeric"
                min="0"
@@ -40,14 +42,15 @@
                value="00"
             />
          </div>
-         <button id="start" class="start-btn close">Start</button>
-         <!-- class="display" -->
-         <div id="display" class="display">00:00:00</div>
+         <button id="start-btn" class="start-btn">Start</button>
+         <div id="display" class="display close">00:00:00</div>
          <div class="timer-btns">
-            <button id="cancel-btn" class="cancel-btn">Cancel</button>
-            <button id="reset-btn" class="reset-btn">Reset</button>
-            <button id="pause-btn" class="pause-btn">Pause</button>
+            <button id="cancel-btn" class="cancel-btn close">Cancel</button>
+            <button id="reset-btn" class="reset-btn close">Reset</button>
+            <button id="pause-btn" class="pause-btn close">Pause</button>
          </div>
       </div>
+      <!-- <script src="app.js"></script> -->
+      <script src="script.js"></script>
    </body>
 </html>
