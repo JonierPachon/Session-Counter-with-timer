@@ -56,7 +56,7 @@
       updateDisplay() {
          const totalSeconds = Math.max(
             0,
-            Math.floor((this.endTime - Date.now()) / 1000)
+            Math.ceil((this.endTime - Date.now()) / 1000)
          );
          const hours = Math.floor(totalSeconds / 3600);
          const minutes = Math.floor((totalSeconds % 3600) / 60);
